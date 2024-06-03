@@ -6,7 +6,7 @@ import base64
 import sys
 from datetime import datetime
 # Mode
-mode = "openai" # "local" or "openai"
+mode = "local" # "local" or "openai"
 
 # API
 local_client = OpenAI(base_url="http://localhost:1234/v1", api_key="lm-studio")
@@ -27,6 +27,16 @@ mistral_8x7b = [
 mistral_7b = [
         {
             "model": "TheBloke/Mistral-7B-Instruct-v0.2-GGUF/mistral-7b-instruct-v0.2.Q4_K_S.gguf",
+            'api_key': 'any string here is fine',
+            'api_type': 'openai',
+            'base_url': "http://localhost:1234/v1",
+        }
+]
+
+##Added by Libny -- go to the last code block in this script and change the variable "completion_model"!!
+mistral_7b_a = [
+        {
+            "model": "TheBloke/Mistral-7B-Instruct-v0.1-GGUF",
             'api_key': 'any string here is fine',
             'api_type': 'openai',
             'base_url': "http://localhost:1234/v1",
@@ -189,7 +199,12 @@ class Tee:
         for file in self.files:
             file.close()
 
+## MODIFIED BY LIBNY ##
+import os
 def open_logs(script_name):
+    logs_dir = "logs"
+    if not os.path.exists(logs_dir):
+        os.makedirs(logs_dir)    
     sys.dont_write_bytecode = True
     current_datetime = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     logs = f"logs/{script_name}_{current_datetime}.txt"

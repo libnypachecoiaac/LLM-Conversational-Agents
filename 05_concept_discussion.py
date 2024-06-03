@@ -2,7 +2,7 @@
 from autogen import ConversableAgent
 from config import *
 from rag_retriever import use_rag
-open_logs("concept_discussion")
+open_logs("05_concept_discussion")
 
 
 # README: This script creates a conversation between an intern (creates concepts) and a jury (asks questions about them)
@@ -24,7 +24,7 @@ intern = ConversableAgent(name="intern",
                        is_termination_msg = lambda msg: msg.get("content") is not None
                         and "100%" in msg["content"],
                        llm_config={
-                           "config_list": gpt4_turbo,
+                           "config_list": mistral_7b_a,
                            "temperature": 0.9,
                        },
                        code_execution_config=False,
@@ -44,7 +44,7 @@ jury= ConversableAgent(name="jury",
                         and "100%" in msg["content"],
                         # human_input_mode="ALWAYS",
                        llm_config={
-                           "config_list": gpt4_turbo,
+                           "config_list": mistral_7b_a,
                            "temperature": 0.9,
                        })
 
