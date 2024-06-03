@@ -2,7 +2,7 @@
 from autogen import ConversableAgent
 from config import *
 from rag_retriever import use_rag
-open_logs("05_concept_discussion")
+open_logs("concept_discussion")
 
 
 # README: This script creates a conversation between an intern (creates concepts) and a jury (asks questions about them)
@@ -36,7 +36,7 @@ jury= ConversableAgent(name="jury",
                        Your are a jury in the selection panel for an architecture competition and your role is to review design concepts.
                        You will follow this subtasks:
                        1. Think about the concept and make three questions that will expose additional detail about the design and architecture of the concept.
-                       2. Classify between 0 and 100% how much the given concept answers your questions clearly and is related to the design context information.
+                       2. Classify between 0 and 95% how much the given concept answers your questions clearly and is related to the design context information.
                        You will always ask new questions about the concept to the intern until you are satisfied with the concept.
                        If you are satisfied, simply answer "100%"
                        """,
